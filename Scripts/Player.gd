@@ -23,7 +23,9 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2(0, 0), PLAYER_DRAG)
 	move_and_slide()
-	
+
+func _process(delta):
+	pass
 
 	
 
