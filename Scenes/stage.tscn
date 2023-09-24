@@ -1,32 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba8j456xh62iy"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drtbg"]
+[ext_resource type="Script" path="res://Scripts/BeatsManager.gd" id="1_r2iry"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_ft7wt"]
-
-[sub_resource type="GDScript" id="GDScript_6rryr"]
-script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-
-func _on_timer_timeout():
-	# Play Beat
-	pass # Replace with function body.
-"
 
 [node name="Stage" type="Node2D"]
 
 [node name="BeatsManager" type="Node2D" parent="."]
-script = SubResource("GDScript_6rryr")
+script = ExtResource("1_r2iry")
 
 [node name="Timer" type="Timer" parent="BeatsManager"]
 
