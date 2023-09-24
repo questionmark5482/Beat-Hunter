@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba8j456xh62iy"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drtbg"]
+[ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_ft7wt"]
+
+[sub_resource type="GDScript" id="GDScript_6rryr"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+func _on_timer_timeout():
+	# Play Beat
+	pass # Replace with function body.
+"
+
+[node name="Stage" type="Node2D"]
+
+[node name="BeatsManager" type="Node2D" parent="."]
+script = SubResource("GDScript_6rryr")
+
+[node name="Timer" type="Timer" parent="BeatsManager"]
+
+[node name="Sprite2D" type="Sprite2D" parent="BeatsManager"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_drtbg")
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_ft7wt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+scale = Vector2(60, 60)
+polygon = PackedVector2Array(1, 1, 1, -1, -1, -1, -1, 1)
+
+[connection signal="timeout" from="BeatsManager/Timer" to="BeatsManager" method="_on_timer_timeout"]
