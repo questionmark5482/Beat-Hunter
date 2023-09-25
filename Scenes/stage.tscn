@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ba8j456xh62iy"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_drtbg"]
 [ext_resource type="Script" path="res://Scripts/BeatsManager.gd" id="1_r2iry"]
+[ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="2_b58qq"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_ft7wt"]
 
 [node name="Stage" type="Node2D"]
@@ -14,7 +14,7 @@ script = ExtResource("1_r2iry")
 [node name="Sprite2D" type="Sprite2D" parent="BeatsManager"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_drtbg")
+script = ExtResource("2_b58qq")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player"]
 texture = ExtResource("2_ft7wt")

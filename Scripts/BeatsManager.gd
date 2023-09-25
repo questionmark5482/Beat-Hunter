@@ -6,6 +6,7 @@ var total_beats: int = 64
 var bpm: float = 100
 var beat_interval: float = 60/bpm
 var current_beat: int = 0
+var current_beat_time: float
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,5 +24,5 @@ func _process(delta):
 
 func _on_timer_timeout():
 	current_beat += 1
-	print("Beat!")
+#	print("Beat!")
 	pass # Replace with function body.
