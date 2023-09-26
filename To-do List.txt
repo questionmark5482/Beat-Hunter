@@ -1,0 +1,5 @@
+Add sound to beats, and other moves (To check input accuracy)
+Time stamp
+Construct input system (to recognize beats)
+Camera
+Create boss

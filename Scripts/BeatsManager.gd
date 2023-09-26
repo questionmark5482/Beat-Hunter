@@ -1,5 +1,6 @@
 extends Node2D
 var timer: Timer
+var audio_player: AudioStreamPlayer
 
 var start_time: float
 var total_beats: int = 64
@@ -14,6 +15,7 @@ func _ready():
 	timer = get_child(0)
 	timer.wait_time = beat_interval
 	timer.start()
+	audio_player = get_child(1)
 	pass # Replace with function body.
 
 
@@ -24,5 +26,6 @@ func _process(delta):
 
 func _on_timer_timeout():
 	current_beat += 1
+	audio_player.play()
 #	print("Beat!")
 	pass # Replace with function body.

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddiyjdwb47smh"
+path="res://.godot/imported/Side Stick.wav-7f9f9e71f65f25a8667a59781bf9a4cb.sample"
+
+[deps]
+
+source_file="res://Audio/Side Stick.wav"
+dest_files=["res://.godot/imported/Side Stick.wav-7f9f9e71f65f25a8667a59781bf9a4cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
