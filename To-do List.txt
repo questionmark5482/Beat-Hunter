@@ -1,5 +1,14 @@
-Add sound to beats, and other moves (To check input accuracy)
-Time stamp
-Construct input system (to recognize beats)
-Camera
-Create boss
+2023/09/27:
+	Todo:
+		1. Add sound to beats, and other moves (To check input accuracy)
+		2. Time stamp
+		3. Construct input system (to recognize beats) # Is the input system independent from attack types? Do we need a separate button for entering(exiting) dance state? 
+		4. Camera
+		5. Create boss  # How many moves does a typical Monster Hunter boss have?
+	
+	Results:
+		1. Event system responds very fast. Finished first try on audio. 
+		2. Done. -> Time.get_unix_time_from_system()
+		3. 
+		4. Simple one added.
+		5. 

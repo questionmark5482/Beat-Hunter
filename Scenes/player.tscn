@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://by3j1k0kwphdg"]
+
+[ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="1_0kxaa"]
+[ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_6bfeq"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0kxaa")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_6bfeq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(60, 60)
+polygon = PackedVector2Array(1, 1, 1, -1, -1, -1, -1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)

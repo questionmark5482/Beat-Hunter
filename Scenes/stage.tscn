@@ -1,32 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba8j456xh62iy"]
+[gd_scene load_steps=3 format=3 uid="uid://ba8j456xh62iy"]
 
-[ext_resource type="Script" path="res://Scripts/BeatsManager.gd" id="1_r2iry"]
-[ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="2_b58qq"]
-[ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_ft7wt"]
-[ext_resource type="AudioStream" uid="uid://lj4p0o4hf8ch" path="res://Audio/Closed Hi-Hat.wav" id="2_pdm5i"]
+[ext_resource type="PackedScene" uid="uid://0mrhihhtxc8w" path="res://Scenes/beats_manager.tscn" id="1_o6i02"]
+[ext_resource type="PackedScene" uid="uid://by3j1k0kwphdg" path="res://Scenes/player.tscn" id="3_dvebp"]
 
 [node name="Stage" type="Node2D"]
 
-[node name="BeatsManager" type="Node2D" parent="."]
-script = ExtResource("1_r2iry")
+[node name="BeatsManager" parent="." instance=ExtResource("1_o6i02")]
 
-[node name="BeatTimer" type="Timer" parent="BeatsManager"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BeatsManager"]
-stream = ExtResource("2_pdm5i")
-
-[node name="Sprite2D" type="Sprite2D" parent="BeatsManager"]
-
-[node name="SongTimer" type="Timer" parent="BeatsManager"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("2_b58qq")
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_ft7wt")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
-scale = Vector2(60, 60)
-polygon = PackedVector2Array(1, 1, 1, -1, -1, -1, -1, 1)
-
-[connection signal="timeout" from="BeatsManager/BeatTimer" to="BeatsManager" method="_on_timer_timeout"]
+[node name="Player" parent="." instance=ExtResource("3_dvebp")]

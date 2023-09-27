@@ -72,6 +72,7 @@ func handle_run_state_input(event):
 		current_substate = SUBSTATE_ATTACK
 
 func handle_dance_state_input(event):
+	# Problem is here. Attack state can ony detect attack.
 	match current_substate:
 		SUBSTATE_ATTACK:
 			handle_attack_substate_input(event)
@@ -81,16 +82,16 @@ func handle_dance_state_input(event):
 			handle_dodge_substate_input(event)
 
 func handle_attack_substate_input(event):
-	if event.is_action_released("attack"):
+	if event.is_action_pressed("attack"):
 		print("Dance_Attack!")
 		current_substate = SUBSTATE_DEFEND
 
 func handle_defend_substate_input(event):
-	if event.is_action_released("defend"):
+	if event.is_action_pressed("defend"):
 		print("Dance_Defend!")
 		current_substate = SUBSTATE_DODGE
 
 func handle_dodge_substate_input(event):
-	if event.is_action_released("dodge"):
+	if event.is_action_pressed("dodge"):
 		print("Dance_dodge!")
 		current_state = STATE_RUN
