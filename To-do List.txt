@@ -1,3 +1,14 @@
+2023/09/28:
+	Todo:
+		1. Boss    Kirin is a good choice.
+		2. Input System
+		3. Dance moves
+	After consideration, I believe its better to first construct a normal battle where the boss and player can 
+	hurt each other, and then think about aligning the time with beats.
+
+
+
+
 2023/09/27:
 	Todo:
 		1. Add sound to beats, and other moves (To check input accuracy)

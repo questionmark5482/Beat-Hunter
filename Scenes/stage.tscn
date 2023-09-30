@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba8j456xh62iy"]
+[gd_scene load_steps=4 format=3 uid="uid://ba8j456xh62iy"]
 
 [ext_resource type="PackedScene" uid="uid://0mrhihhtxc8w" path="res://Scenes/beats_manager.tscn" id="1_o6i02"]
+[ext_resource type="PackedScene" uid="uid://do1c08fvn57es" path="res://Scenes/monster.tscn" id="3_217rf"]
 [ext_resource type="PackedScene" uid="uid://by3j1k0kwphdg" path="res://Scenes/player.tscn" id="3_dvebp"]
 
 [node name="Stage" type="Node2D"]
@@ -8,3 +9,6 @@
 [node name="BeatsManager" parent="." instance=ExtResource("1_o6i02")]
 
 [node name="Player" parent="." instance=ExtResource("3_dvebp")]
+
+[node name="Monster" parent="." instance=ExtResource("3_217rf")]
+position = Vector2(206, -2)

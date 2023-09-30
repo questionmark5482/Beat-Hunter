@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const PLAYER_DRAG = 50
+const SPEED = 700.0
+const PLAYER_DRAG = SPEED * 0.2
 const STEER_VELOCITY = 1
 
 var input_direction: Vector2
@@ -18,8 +18,11 @@ const SUBSTATE_ATTACK = "attack"
 const SUBSTATE_DEFEND = "defend"
 const SUBSTATE_DODGE = "dodge"
 
+var audio_player: AudioStreamPlayer
+
 func _ready():
 	current_state = STATE_RUN
+	audio_player = get_node("AudioStreamPlayer")
 
 func _physics_process(delta):
 	match current_state:
@@ -49,6 +52,7 @@ func handle_dance_state(delta):
 
 func handle_attack_substate(delta):
 	print("Dance_Attack!")
+	audio_player.play()
 	current_substate = SUBSTATE_IDLE
 	pass
 
@@ -76,7 +80,8 @@ func handle_run_state_input(event):
 		current_substate = SUBSTATE_IDLE
 
 func handle_dance_state_input(event):
-	# Problem is here. Attack state can ony detect attack.
+	if event.is_action_released("dance"):
+		current_state = STATE_RUN
 	match current_substate:
 		SUBSTATE_IDLE:
 			handle_idle_substate_input(event)
