@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://do1c08fvn57es"]
+[gd_scene load_steps=7 format=3 uid="uid://do1c08fvn57es"]
 
+[ext_resource type="Script" path="res://Scripts/monster.gd" id="1_r1c88"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="1_wk683"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0t05"]
@@ -65,12 +66,14 @@ _data = {
 }
 
 [node name="Monster" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_r1c88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_x0t05")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(226, 51)
 texture = ExtResource("1_wk683")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]

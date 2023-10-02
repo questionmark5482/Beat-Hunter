@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ddiyjdwb47smh" path="res://Audio/Side Stick.wav" id="3_ql4p5"]
 
 [node name="Player" type="CharacterBody2D"]
+rotation = 1.57079
 script = ExtResource("1_0kxaa")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
