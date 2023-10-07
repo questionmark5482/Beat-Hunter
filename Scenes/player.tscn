@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://by3j1k0kwphdg"]
+[gd_scene load_steps=5 format=3 uid="uid://by3j1k0kwphdg"]
 
 [ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="1_0kxaa"]
+[ext_resource type="Resource" uid="uid://dvbkk62ds6dvn" path="res://Custom resources/Attack0.tres" id="2_5deqr"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_6bfeq"]
 [ext_resource type="AudioStream" uid="uid://ddiyjdwb47smh" path="res://Audio/Side Stick.wav" id="3_ql4p5"]
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.57079
 script = ExtResource("1_0kxaa")
+attack_move = ExtResource("2_5deqr")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6bfeq")
@@ -20,3 +22,8 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ql4p5")
+
+[node name="Dance_move_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Dance_move_timer" to="." method="_on_dance_move_timer_timeout"]

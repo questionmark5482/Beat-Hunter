@@ -28,7 +28,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	current_beat += 1
-	audio_player.play()
+#	audio_player.play()
 	current_beat_time = Time.get_unix_time_from_system() - start_time
 #	print("Beat!")
 	pass # Replace with function body.

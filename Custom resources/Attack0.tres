@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Attack_move" load_steps=2 format=3 uid="uid://dvbkk62ds6dvn"]
+
+[ext_resource type="Script" path="res://Scripts/Resource scripts/Attack_move.gd" id="1_julfm"]
+
+[resource]
+script = ExtResource("1_julfm")
+attack_name = "Attack0"
+delay = 1.0
+damage = 1
+range = 1.0
+angle = 0.0

@@ -1,6 +1,6 @@
 2023/09/28:
 	Todo:
-		1. Boss    Kirin is a good choice.
+		1. Boss： Kirin is a good choice.
 		2. Input System
 		3. Dance moves
 	After consideration, I believe its better to first construct a normal battle where the boss and player can 
