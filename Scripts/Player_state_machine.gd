@@ -22,12 +22,15 @@ var audio_player: AudioStreamPlayer
 var dance_move_timer: Timer
 
 @export var attack_move: Attack_move
+var health_bar: Health_bar
 
 func _ready():
 	current_state = STATE_RUN
 	audio_player = get_node("AudioStreamPlayer")
 	dance_move_timer = get_node("Dance_move_timer")
-	print(attack_move.attack_name)
+#	print(attack_move.attack_name)
+	health_bar = Health_bar.new(3)
+#	print("Health = " + str(health_bar.max_health))
 
 func _physics_process(delta):
 	match current_state:
@@ -124,6 +127,7 @@ func _on_dance_move_timer_timeout():
 func start_attack(input_attack_move: Attack_move):
 	print("Starting " + input_attack_move.attack_name + ", delay = " + str(input_attack_move.delay))
 	dance_move_timer.start(input_attack_move.delay)
+	health_bar.decrease_health(1)
 
 func execute_attack(input_attack_move):
 	audio_player.play()

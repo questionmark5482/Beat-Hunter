@@ -17,12 +17,14 @@ const STATE_IDLE = "idle"
 var audio_player: AudioStreamPlayer
 
 var  player
+var health_bar: Health_bar
 
 func _ready():
 	current_state = STATE_CHASE
 	audio_player = get_node("AudioStreamPlayer")
 	player = get_parent().get_node("Player")
 #	print(player.transform.origin)
+	health_bar = Health_bar.new(3)
 
 func _physics_process(delta):
 	match current_state:

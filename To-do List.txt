@@ -8,6 +8,9 @@
 		Healthbar system.
 		
 		Resource can define not only variables, but also methods and signals! Great!
+		
+	Result:
+		I created a healthbar with methods, but no signals. Next step is to add signals.
 
 
 
