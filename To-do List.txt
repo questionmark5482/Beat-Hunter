@@ -1,3 +1,22 @@
+2023/10/12:
+	Todo:
+		Not so sure. Just learned the way to construct componenets and put them together.
+		Resource is what needed to be tried.
+		
+		I already created Attack_move as a customized resource.
+		I guess I need to align things to the beat.
+		Healthbar system.
+		
+		Resource can define not only variables, but also methods and signals! Great!
+
+
+
+
+
+
+
+
+
 2023/09/28:
 	Todo:
 		1. Boss： Kirin is a good choice.
