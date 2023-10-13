@@ -25,6 +25,7 @@ func _ready():
 	player = get_parent().get_node("Player")
 #	print(player.transform.origin)
 	health_bar = Health_bar.new(3)
+	health_bar.health_changed.connect(_on_health_changed)
 
 func _physics_process(delta):
 	match current_state:
@@ -45,6 +46,9 @@ func handle_chase_state(delta):
 	move_and_slide()
 	
 func handle_idle_state(delta):
+	pass
+	
+func _on_health_changed():
 	pass
 
 

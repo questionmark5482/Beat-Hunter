@@ -28,9 +28,10 @@ func _ready():
 	current_state = STATE_RUN
 	audio_player = get_node("AudioStreamPlayer")
 	dance_move_timer = get_node("Dance_move_timer")
-#	print(attack_move.attack_name)
+
 	health_bar = Health_bar.new(3)
-#	print("Health = " + str(health_bar.max_health))
+	health_bar.health_changed.connect(_on_health_changed)
+
 
 func _physics_process(delta):
 	match current_state:
@@ -133,3 +134,6 @@ func execute_attack(input_attack_move):
 	audio_player.play()
 	print(str(input_attack_move.attack_name) + "! Damage = " + str(input_attack_move.damage))
 	current_substate = SUBSTATE_IDLE
+	
+func _on_health_changed():
+	pass

@@ -1,3 +1,4 @@
+################################################################################################
 2023/10/12:
 	Todo:
 		Not so sure. Just learned the way to construct componenets and put them together.
@@ -11,15 +12,12 @@
 		
 	Result:
 		I created a healthbar with methods, but no signals. Next step is to add signals.
+		Signals successfully added.
+		Now maybe to check how other people make the rpg weapon system? 
+		Need to maybe let the weapon to hurt target.
+		
 
-
-
-
-
-
-
-
-
+################################################################################################
 2023/09/28:
 	Todo:
 		1. Boss： Kirin is a good choice.
@@ -30,7 +28,7 @@
 
 
 
-
+################################################################################################
 2023/09/27:
 	Todo:
 		1. Add sound to beats, and other moves (To check input accuracy)
