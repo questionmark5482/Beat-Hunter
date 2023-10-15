@@ -14,8 +14,18 @@
 	The above steps finished. Now the next step: 
 		- make the attack into signals, and the monster listen to the signal.
 		- make monster able to attack the player.
-	
-
+		
+		For signals:
+			- Create node2d named weapon, which handles all the attacks.
+			- weapon should send out signals, while monster register to this signal.
+			Question: what should the signal be like?
+			
+	Result:
+		- Finished constructing signal based weapon system.
+		- Attack method 1 implemented.
+		
+		
+		
 ################################################################################################
 2023/10/12:
 	Todo:

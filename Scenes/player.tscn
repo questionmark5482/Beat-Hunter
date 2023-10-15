@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://by3j1k0kwphdg"]
+[gd_scene load_steps=8 format=3 uid="uid://by3j1k0kwphdg"]
 
 [ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="1_0kxaa"]
 [ext_resource type="Resource" uid="uid://dvbkk62ds6dvn" path="res://Custom resources/Attack0.tres" id="2_5deqr"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_6bfeq"]
 [ext_resource type="AudioStream" uid="uid://ddiyjdwb47smh" path="res://Audio/Side Stick.wav" id="3_ql4p5"]
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="5_gj0c2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_toqjq"]
 radius = 63.3482
@@ -32,10 +33,18 @@ stream = ExtResource("3_ql4p5")
 [node name="Dance_move_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Attack_area" type="Area2D" parent="."]
+[node name="Weapon" type="Node2D" parent="."]
+script = ExtResource("5_gj0c2")
+attack_move = ExtResource("2_5deqr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area"]
+[node name="Attack_area" type="Area2D" parent="Weapon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon/Attack_area"]
 position = Vector2(0.000793457, -126)
 shape = SubResource("CapsuleShape2D_sb5rd")
 
+[node name="Attack_timer" type="Timer" parent="Weapon"]
+one_shot = true
+
 [connection signal="timeout" from="Dance_move_timer" to="." method="_on_dance_move_timer_timeout"]
+[connection signal="timeout" from="Weapon/Attack_timer" to="Weapon" method="_on_attack_timer_timeout"]

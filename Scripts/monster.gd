@@ -9,24 +9,37 @@ var player_direction: Vector2
 var move_direction: Vector2
 var facing_angle: float
 
+# State Machine
 var current_state: String
-
 const STATE_CHASE= "chase"
 const STATE_IDLE = "idle"
 
+# Child nodes: to be taken down in _ready()
 var audio_player: AudioStreamPlayer
-
-var  player
 var health_bar: Health_bar
 
-func _ready():
-	current_state = STATE_CHASE
-	audio_player = get_node("AudioStreamPlayer")
-	player = get_parent().get_node("Player")
-#	print(player.transform.origin)
-	health_bar = Health_bar.new(3)
-	health_bar.health_changed.connect(_on_health_changed)
+# Other nodes to be taken down in _ready()
+var player: Player
+var player_weapon: Weapon
 
+func _ready():
+	# State Machine
+	current_state = STATE_CHASE
+	
+	# Get necessary child nodes:
+#	audio_player = get_node("AudioStreamPlayer")
+	health_bar = Health_bar.new(3)
+	
+	# Get other nodes:
+	player = get_parent().get_node("Player")
+	player_weapon = player.get_node("Weapon")
+	
+	# Connect signals:
+	health_bar.health_changed.connect(_on_health_changed)
+	player_weapon.fired.connect(_on_weapon_fired)
+
+	
+	
 func _physics_process(delta):
 	match current_state:
 		STATE_CHASE:
@@ -37,7 +50,6 @@ func _physics_process(delta):
 func handle_chase_state(delta):
 	player_vector = player.get_global_transform().origin - self.get_global_transform().origin
 	player_direction = player_vector.normalized()
-
 	velocity = player_direction * SPEED
 	facing_angle = player_direction.angle()
 	set_global_rotation(facing_angle + PI/2)
@@ -50,5 +62,9 @@ func handle_idle_state(delta):
 	
 func _on_health_changed():
 	pass
+	
+func _on_weapon_fired(damaged_bodies, damage):
+	if self in damaged_bodies:
+		health_bar.decrease_health(damage)
 
 

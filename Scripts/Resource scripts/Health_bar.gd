@@ -8,10 +8,15 @@ signal health_changed
 var max_health: int = 3
 var current_health: int = 3
 
+# Owner:
+var owner
+
 # Initialize the health bar
 func _init(input_max_health):
 	max_health = input_max_health
 	current_health = input_max_health
+	
+
 
 # Method to decrease health
 func decrease_health(amount: int):
