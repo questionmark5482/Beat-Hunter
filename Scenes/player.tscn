@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://by3j1k0kwphdg"]
+[gd_scene load_steps=7 format=3 uid="uid://by3j1k0kwphdg"]
 
 [ext_resource type="Script" path="res://Scripts/Player_state_machine.gd" id="1_0kxaa"]
 [ext_resource type="Resource" uid="uid://dvbkk62ds6dvn" path="res://Custom resources/Attack0.tres" id="2_5deqr"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="2_6bfeq"]
 [ext_resource type="AudioStream" uid="uid://ddiyjdwb47smh" path="res://Audio/Side Stick.wav" id="3_ql4p5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_toqjq"]
+radius = 63.3482
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb5rd"]
+radius = 19.0
+height = 118.0
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.57079
@@ -13,9 +20,8 @@ attack_move = ExtResource("2_5deqr")
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6bfeq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-scale = Vector2(60, 60)
-polygon = PackedVector2Array(1, 1, 1, -1, -1, -1, -1, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_toqjq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -25,5 +31,11 @@ stream = ExtResource("3_ql4p5")
 
 [node name="Dance_move_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Attack_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area"]
+position = Vector2(0.000793457, -126)
+shape = SubResource("CapsuleShape2D_sb5rd")
 
 [connection signal="timeout" from="Dance_move_timer" to="." method="_on_dance_move_timer_timeout"]

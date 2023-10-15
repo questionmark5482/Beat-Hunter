@@ -3,8 +3,6 @@
 [ext_resource type="Script" path="res://Scripts/monster.gd" id="1_r1c88"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="1_wk683"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0t05"]
-
 [sub_resource type="Animation" id="Animation_53024"]
 length = 0.001
 tracks/0/type = "value"
@@ -65,13 +63,12 @@ _data = {
 "test_animation": SubResource("Animation_wa0pg")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0t05"]
+size = Vector2(65, 65)
+
 [node name="Monster" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_r1c88")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_x0t05")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wk683")
@@ -82,3 +79,8 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_0pst5")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_x0t05")
+debug_color = Color(0.976471, 0.14902, 0, 0.419608)

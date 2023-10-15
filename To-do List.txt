@@ -1,4 +1,30 @@
 ################################################################################################
+2023/10/13:
+	There are several ways to implement attack:
+		1. Instant overlap detection at beat time. 
+		2. A weapon with hitbox
+		3. Projectiles
+	Very hesitant on which to use. Maybe because these are all new methods that I'm not familiar with.
+	Maybe we can try all of them! Start from 1, which is the easiest.
+
+	Steps to realize 1:
+		- Create a new Area2D child of player node, which is the detection area.
+		- At attack execution time, detect whether monster in inside the area.
+		- Damage the monster.
+	The above steps finished. Now the next step: 
+		- make the attack into signals, and the monster listen to the signal.
+		- make monster able to attack the player.
+	
+
+################################################################################################
+2023/10/12:
+	Todo:
+		Decided to make a simplist weapon hit-box, and a simplist monster hurt-box. 
+		Worry about various types of weapons later.
+		
+
+
+################################################################################################
 2023/10/12:
 	Todo:
 		Not so sure. Just learned the way to construct componenets and put them together.

@@ -23,6 +23,9 @@ var dance_move_timer: Timer
 
 @export var attack_move: Attack_move
 var health_bar: Health_bar
+var attack_area: Area2D
+
+var monster
 
 func _ready():
 	current_state = STATE_RUN
@@ -31,6 +34,10 @@ func _ready():
 
 	health_bar = Health_bar.new(3)
 	health_bar.health_changed.connect(_on_health_changed)
+	
+	attack_area = get_node("Attack_area")
+	
+	monster = get_parent().get_node("Monster")
 
 
 func _physics_process(delta):
@@ -85,13 +92,13 @@ func _input(event):
 
 func handle_run_state_input(event):
 	if event.is_action_pressed("dance"):
-		print("Enter Dance State")
+#		print("Enter Dance State")
 		current_state = STATE_DANCE
 		current_substate = SUBSTATE_IDLE
 
 func handle_dance_state_input(event):
 	if event.is_action_released("dance"):
-		print("Exit Dance State")
+#		print("Exit Dance State")
 		current_state = STATE_RUN
 	match current_substate:
 		SUBSTATE_IDLE:
@@ -126,13 +133,17 @@ func _on_dance_move_timer_timeout():
 	execute_attack(attack_move)
 
 func start_attack(input_attack_move: Attack_move):
-	print("Starting " + input_attack_move.attack_name + ", delay = " + str(input_attack_move.delay))
+#	print("Starting " + input_attack_move.attack_name + ", delay = " + str(input_attack_move.delay))
 	dance_move_timer.start(input_attack_move.delay)
-	health_bar.decrease_health(1)
+#	health_bar.decrease_health(1)
 
 func execute_attack(input_attack_move):
 	audio_player.play()
-	print(str(input_attack_move.attack_name) + "! Damage = " + str(input_attack_move.damage))
+#	print(str(input_attack_move.attack_name) + "! Damage = " + str(input_attack_move.damage))
+	print(attack_area.get_overlapping_bodies())
+	if monster in attack_area.get_overlapping_bodies():
+		monster.health_bar.decrease_health(1)
+	
 	current_substate = SUBSTATE_IDLE
 	
 func _on_health_changed():
