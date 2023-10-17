@@ -1,5 +1,22 @@
 ################################################################################################
-2023/10/13:
+2023/10/15:
+	Tonight continue to fix the alignment problem. The logic should be:
+		- Player should recognize whether an input is on beat. And if on beat, on which beat.
+		- Player could ask the beatsmanager what input time corresponds to which beat (if on beat).
+		- If the input is on beat, player calls the start_attack(input_beat: int) method on weapon.
+		- The weapon subscribe to the Beats manager, when input_beat == current_beat, execute attack.
+		
+	Result:
+		- The method calculate_input_beat() is written for BeatsManager, but not tested.
+		- The input_beat in player_statemachine is not resolved. Check start_attack()!
+	
+	
+	
+	
+	
+
+################################################################################################
+2023/10/15:
 	I'm very happy with recent progresses. The exploration on resources system is quite fruitful, also the signal system. 
 	What to do next? Remember the ultimate goal recently is to build a model for test. 
 	We need to test whether this game mechanism is fun. Therefore this "Instant overlap detection at beat time" attack mechanis is totally sufficient.
@@ -26,9 +43,6 @@
 		_input() function in player.gd needs fixing. 
 
 		functions in BeatsManager also needs fixing. 
-
-
-
 
 
 

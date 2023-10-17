@@ -13,6 +13,8 @@ var facing_angle: float
 var current_state: String
 var current_substate: String
 
+var input_beat: int = -2
+
 const STATE_RUN = "run"
 const STATE_DANCE = "dance"
 const SUBSTATE_IDLE = "idle"
@@ -30,7 +32,7 @@ var beats_manager: Beats_manager
 # Child nodes: to be taken down in _ready()
 var audio_player: AudioStreamPlayer
 var health_bar: Health_bar
-var weapon
+var weapon: Weapon
 
 
 func _ready():
