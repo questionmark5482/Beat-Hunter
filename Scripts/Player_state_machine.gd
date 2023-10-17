@@ -25,10 +25,10 @@ const SUBSTATE_DODGE = "dodge"
 
 # Other nodes to be taken down in _ready()
 var monster
+var beats_manager: Beats_manager
 
 # Child nodes: to be taken down in _ready()
 var audio_player: AudioStreamPlayer
-var dance_move_timer: Timer
 var health_bar: Health_bar
 var weapon
 
@@ -39,15 +39,16 @@ func _ready():
 	
 	# Get necessary child nodes:
 	audio_player = get_node("AudioStreamPlayer")
-	dance_move_timer = get_node("Dance_move_timer")
 	health_bar = Health_bar.new(3)
 	weapon = get_node("Weapon")
 
 	# Get other nodes:
 	monster = get_parent().get_node("Monster")
+	beats_manager = get_parent().get_node("BeatsManager")
 	
 	# Connect signals:
 	health_bar.health_changed.connect(_on_health_changed)
+	weapon.fired.connect(_on_weapon_fired)
 
 func _physics_process(delta):
 	match current_state:
@@ -67,19 +68,9 @@ func handle_run_state(delta):
 	move_and_slide()
 
 func handle_dance_state(delta):
-#	match current_substate:
-#		SUBSTATE_ATTACK:
-#			handle_attack_substate(delta)
-#		SUBSTATE_DEFEND:
-#			handle_defend_substate(delta)
-#		SUBSTATE_DODGE:
-#			handle_dodge_substate(delta)
 	pass
 
 func handle_attack_substate(delta):
-#	print("Dance_Attack!")
-#	audio_player.play()
-#	current_substate = SUBSTATE_IDLE
 	pass
 
 func handle_defend_substate(delta):
@@ -93,14 +84,25 @@ func handle_dodge_substate(delta):
 	pass
 
 func _input(event):
-	match current_state:
-		STATE_RUN:
-			handle_run_state_input(event)
-		STATE_DANCE:
-			handle_dance_state_input(event)
+	if event.is_action("dance") or event.is_action("attack") or event.is_action("defend") or event.is_action("dodge"):
+		if beats_manager.is_on_beat(Time.get_unix_time_from_system()):
+			match current_state:
+				STATE_RUN:
+					handle_run_state_input(event)
+				STATE_DANCE:
+					handle_dance_state_input(event)
+		else:
+			print("Input not on beat!")
+
+#	match current_state:
+#		STATE_RUN:
+#			handle_run_state_input(event)
+#		STATE_DANCE:
+#			handle_dance_state_input(event)
+			
 
 func handle_run_state_input(event):
-	if event.is_action_pressed("dance"):
+	if event.is_action("dance"):
 #		print("Enter Dance State")
 		current_state = STATE_DANCE
 		current_substate = SUBSTATE_IDLE
@@ -137,25 +139,14 @@ func handle_defend_substate_input(event):
 
 func handle_dodge_substate_input(event):
 	pass
-
-
-func _on_dance_move_timer_timeout():
-	print("executing attack")
-	weapon.execute_attack()
-
-#func start_attack(input_attack_move: Attack_move):
-##	print("Starting " + input_attack_move.attack_name + ", delay = " + str(input_attack_move.delay))
-#	dance_move_timer.start(input_attack_move.delay)
-##	health_bar.decrease_health(1)
-#
-#func execute_attack(input_attack_move):
-#	audio_player.play()
-##	print(str(input_attack_move.attack_name) + "! Damage = " + str(input_attack_move.damage))
-#	print(attack_area.get_overlapping_bodies())
-#	if monster in attack_area.get_overlapping_bodies():
-#		monster.health_bar.decrease_health(1)
 	
-	current_substate = SUBSTATE_IDLE
 	
+	
+	
+	
+# Callbacks
 func _on_health_changed():
 	pass
+	
+func _on_weapon_fired(damaged_bodies, damage):
+	current_substate = SUBSTATE_IDLE

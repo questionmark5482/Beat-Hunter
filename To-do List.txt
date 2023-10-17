@@ -1,5 +1,39 @@
 ################################################################################################
 2023/10/13:
+	I'm very happy with recent progresses. The exploration on resources system is quite fruitful, also the signal system. 
+	What to do next? Remember the ultimate goal recently is to build a model for test. 
+	We need to test whether this game mechanism is fun. Therefore this "Instant overlap detection at beat time" attack mechanis is totally sufficient.
+	What else is needed for this prototype to be testable?
+	
+		1. Input alignment with beats.
+		2. Monster attack pattern.
+		3. UI and visulization of all the moves.
+		4. Expandable designing of moves (both player's and monster's).
+	
+	What's next goal to pick? The one with most risk or the one that's simplist?
+	The former would be 2 and 3? Since animation, graphics, and UI is what we haven't tried.
+	The latter maybe 4. Resource is what I familiar with. But thinking closely, this is a goal we can for sure accomplish. Should focus on more risky ones first.
+	1 however is crucial. 
+	
+	Conclusion: 
+		First do 1, and then 2 & 3 together. Finally 4. Next let's plan about how to implement 1.
+	
+	To do: 
+		If an input is not on_beat, it fails. If it is on_beat, execute. Since input only affects the player, we can put the code in player.gd
+		Can also add a method is_on_beat in beats_manager? Yes, since the monster also need this function? (actaully no, but I already written the function in beatsmanager.)
+	
+		Note the difference between event.is_action and is_action_pressed. To be fixed.
+		_input() function in player.gd needs fixing. 
+
+		functions in BeatsManager also needs fixing. 
+
+
+
+
+
+
+################################################################################################
+2023/10/13:
 	There are several ways to implement attack:
 		1. Instant overlap detection at beat time. 
 		2. A weapon with hitbox
@@ -28,7 +62,7 @@
 		
 ################################################################################################
 2023/10/12:
-	Todo:
+	To do:
 		Decided to make a simplist weapon hit-box, and a simplist monster hurt-box. 
 		Worry about various types of weapons later.
 		
@@ -36,7 +70,7 @@
 
 ################################################################################################
 2023/10/12:
-	Todo:
+	To do:
 		Not so sure. Just learned the way to construct componenets and put them together.
 		Resource is what needed to be tried.
 		
@@ -55,7 +89,7 @@
 
 ################################################################################################
 2023/09/28:
-	Todo:
+	To do:
 		1. Boss： Kirin is a good choice.
 		2. Input System
 		3. Dance moves
@@ -66,7 +100,7 @@
 
 ################################################################################################
 2023/09/27:
-	Todo:
+	To do:
 		1. Add sound to beats, and other moves (To check input accuracy)
 		2. Time stamp
 		3. Construct input system (to recognize beats) # Is the input system independent from attack types? Do we need a separate button for entering(exiting) dance state? 

@@ -30,9 +30,6 @@ zoom = Vector2(0.5, 0.5)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ql4p5")
 
-[node name="Dance_move_timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("5_gj0c2")
 attack_move = ExtResource("2_5deqr")
@@ -46,5 +43,4 @@ shape = SubResource("CapsuleShape2D_sb5rd")
 [node name="Attack_timer" type="Timer" parent="Weapon"]
 one_shot = true
 
-[connection signal="timeout" from="Dance_move_timer" to="." method="_on_dance_move_timer_timeout"]
 [connection signal="timeout" from="Weapon/Attack_timer" to="Weapon" method="_on_attack_timer_timeout"]
