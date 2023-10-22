@@ -100,7 +100,7 @@ func _input(event):
 #		STATE_RUN:
 #			handle_run_state_input(event)
 #		STATE_DANCE:
-#			handle_dance_state_input(event)
+##			handle_dance_state_input(event)
 			
 
 func handle_run_state_input(event):
@@ -127,7 +127,7 @@ func handle_idle_substate_input(event):
 	if event.is_action_pressed("attack"):
 		current_substate = SUBSTATE_ATTACK
 		print("starting attack")
-		weapon.start_attack()
+		weapon.start_attack(beats_manager.calculate_input_beat(Time.get_unix_time_from_system()))
 	if event.is_action_pressed("defend"):
 		current_substate = SUBSTATE_DEFEND
 	if event.is_action_pressed("dodge"):

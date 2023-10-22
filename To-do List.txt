@@ -1,5 +1,13 @@
 ################################################################################################
-2023/10/15:
+2023/10/18:
+	Two issues apart from the previous ones:
+		1. repeated input
+		2. lock the input after a off beat one.
+	
+
+
+################################################################################################
+2023/10/17:
 	Tonight continue to fix the alignment problem. The logic should be:
 		- Player should recognize whether an input is on beat. And if on beat, on which beat.
 		- Player could ask the beatsmanager what input time corresponds to which beat (if on beat).
