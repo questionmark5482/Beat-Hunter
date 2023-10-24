@@ -14,6 +14,7 @@ var current_state: String
 var current_substate: String
 
 var input_beat: int = -2
+var input_locked: bool = false
 
 const STATE_RUN = "run"
 const STATE_DANCE = "dance"
@@ -51,8 +52,11 @@ func _ready():
 	# Connect signals:
 	health_bar.health_changed.connect(_on_health_changed)
 	weapon.fired.connect(_on_weapon_fired)
+	beats_manager.beat_information.connect(_on_beat)
+	
 
 func _physics_process(delta):
+#	print(str(beats_manager.calculate_input_beat(Time.get_unix_time_from_system())))
 	match current_state:
 		STATE_RUN:
 			handle_run_state(delta)
@@ -86,25 +90,14 @@ func handle_dodge_substate(delta):
 	pass
 
 func _input(event):
-	if event.is_action("dance") or event.is_action("attack") or event.is_action("defend") or event.is_action("dodge"):
-		if beats_manager.is_on_beat(Time.get_unix_time_from_system()):
-			match current_state:
-				STATE_RUN:
-					handle_run_state_input(event)
-				STATE_DANCE:
-					handle_dance_state_input(event)
-		else:
-			print("Input not on beat!")
-
-#	match current_state:
-#		STATE_RUN:
-#			handle_run_state_input(event)
-#		STATE_DANCE:
-##			handle_dance_state_input(event)
-			
+	match current_state:
+		STATE_RUN:
+			handle_run_state_input(event)
+		STATE_DANCE:
+			handle_dance_state_input(event)
 
 func handle_run_state_input(event):
-	if event.is_action("dance"):
+	if event.is_action_pressed("dance"):
 #		print("Enter Dance State")
 		current_state = STATE_DANCE
 		current_substate = SUBSTATE_IDLE
@@ -113,20 +106,31 @@ func handle_dance_state_input(event):
 	if event.is_action_released("dance"):
 #		print("Exit Dance State")
 		current_state = STATE_RUN
-	match current_substate:
-		SUBSTATE_IDLE:
-			handle_idle_substate_input(event)
-		SUBSTATE_ATTACK:
-			handle_attack_substate_input(event)
-		SUBSTATE_DEFEND:
-			handle_defend_substate_input(event)
-		SUBSTATE_DODGE:
-			handle_dodge_substate_input(event)
+		return
+	if is_dance_input(event):
+		if input_locked:
+			print("Input locked!")
+			return
+		else:
+			input_beat = beats_manager.calculate_input_beat(Time.get_unix_time_from_system())
+			if input_beat == -1:
+				print("Dance input, not on beat!")
+				input_locked = true
+			else:
+				print("Dance input, on beat no. " + str(input_beat) + "!")
+				match current_substate:
+					SUBSTATE_IDLE:
+						handle_idle_substate_input(event)
+					SUBSTATE_ATTACK:
+						handle_attack_substate_input(event)
+					SUBSTATE_DEFEND:
+						handle_defend_substate_input(event)
+					SUBSTATE_DODGE:
+						handle_dodge_substate_input(event)
 
 func handle_idle_substate_input(event):
 	if event.is_action_pressed("attack"):
 		current_substate = SUBSTATE_ATTACK
-		print("starting attack")
 		weapon.start_attack(beats_manager.calculate_input_beat(Time.get_unix_time_from_system()))
 	if event.is_action_pressed("defend"):
 		current_substate = SUBSTATE_DEFEND
@@ -142,9 +146,13 @@ func handle_defend_substate_input(event):
 func handle_dodge_substate_input(event):
 	pass
 	
+func is_dance_input(event) -> bool:
+	if event.is_action_pressed("attack") or event.is_action_pressed("defend") or event.is_action_pressed("dodge"):
+		return true
+	else:
+		return false
 	
-	
-	
+
 	
 # Callbacks
 func _on_health_changed():
@@ -152,3 +160,13 @@ func _on_health_changed():
 	
 func _on_weapon_fired(damaged_bodies, damage):
 	current_substate = SUBSTATE_IDLE
+
+func _on_beat(current_beat):
+	input_locked = false
+#	print("current beat is " + str(current_beat))
+#	print_state_machine()
+	pass
+
+# Debug:
+func print_state_machine():
+	print("Current state is: " + current_state + ", current substate is: " + current_substate + ".")

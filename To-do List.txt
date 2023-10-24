@@ -1,4 +1,36 @@
 ################################################################################################
+2023/10/22:
+	For the repeated input, seems one can fix it just by using is_action_pressed(). Now continue to
+	fix the alignment.
+	
+	Another issue: cannot exit dance state properly.
+	Follow up: attack cannot finish.
+	
+	Repeat input fixed. Alignment fixed. Input lock tried and perhaps work.
+	
+	Maybe add a print switch to all the components, making debug easier?
+	
+	To do:
+		The discussion on 10/15 is still valid. The goal is to test the mechanism. Following that discussion,
+		what to do next is the "Monster attack pattern".
+		
+		Though the player attack is still not perfect because:
+			- No sound.
+			- Not expandable design wise.
+			- Attack range is not changable.
+		These are more or less UI and expandable problem, we should fix these in later quests.
+		
+		As for monster attack pattern:
+			1. Movement and facing. Add rotation speed.
+			2. Define a new node type? monster attack box? so that when the monster selected a move,
+				it summons series of attack box that explodes on certain beats.
+				attack box can move (chase player) and attack. Has count down UI.
+			3. Monster can also charge. 
+
+
+
+
+################################################################################################
 2023/10/18:
 	Two issues apart from the previous ones:
 		1. repeated input
@@ -20,11 +52,10 @@
 	
 	
 	
-	
-	
 
 ################################################################################################
 2023/10/15:
+	# context: on 10/13 the goal to implement attack is finished. Following paragraph discussed what to do next.
 	I'm very happy with recent progresses. The exploration on resources system is quite fruitful, also the signal system. 
 	What to do next? Remember the ultimate goal recently is to build a model for test. 
 	We need to test whether this game mechanism is fun. Therefore this "Instant overlap detection at beat time" attack mechanis is totally sufficient.

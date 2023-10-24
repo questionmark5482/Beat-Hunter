@@ -12,8 +12,8 @@ var current_beat: int = 0
 var current_beat_time: float
 var previous_time = 0
 
-var input_tolerance: float = 1. / 8.   # in the unit of beat!
-var input_bias: float = 0              # in the unit of second!
+var input_tolerance: float = 1. / 6.   # in the unit of beat!
+var input_bias: float = 0.06              # in the unit of second!
 # If  on-beat_time - tolerance * beat_interval < input_time - bias < on-beat_time, then input_time is on beat
 
 signal beat_information(current_beat)
@@ -26,6 +26,8 @@ func _ready():
 	beat_timer.start()
 	start_time = Time.get_unix_time_from_system()
 	audio_player = get_node("AudioStreamPlayer")
+	
+#	print(input_tolerance)
 
 
 
@@ -53,9 +55,12 @@ func time_to_following_beat(n: int) -> float:
 # Callbacks
 func _on_timer_timeout():
 	current_beat += 1
-#	audio_player.play()
+	audio_player.play()
 	current_beat_time = Time.get_unix_time_from_system() - start_time
 #	print("Beat!")
 	beat_information.emit(current_beat)
 	pass # Replace with function body.
+	
+	
+
 

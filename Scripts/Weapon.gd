@@ -30,12 +30,15 @@ func _ready():
 	# Connect signals:
 	beats_manager.beat_information.connect(_on_beat)
 	
+	print(str(attack_move.delay_beat))
+	
 func _process(delta):
 	pass
 
 func start_attack(input_beat):
 	is_attacking = true
 	attack_beat = input_beat + attack_move.delay_beat
+#	print("Starting attack! Attacking on beat no. " + str(attack_beat) + ", current beat is no. " + str(input_beat))
 	pass
 	
 func _on_beat(current_beat):
@@ -46,12 +49,12 @@ func _on_beat(current_beat):
 	
 func execute_attack():
 #	audio_player.play()
-	print(str(attack_move.attack_name) + "! Damage = " + str(attack_move.damage))
+#	print(str(attack_move.attack_name) + "! Damage = " + str(attack_move.damage))
 	damaged_bodies = attack_area.get_overlapping_bodies()
 	fired.emit(damaged_bodies, attack_move.damage)
 	pass
 
-
+# Callbacks:
 func _on_attack_timer_timeout():
 #	print("executing attack")
 #	execute_attack()

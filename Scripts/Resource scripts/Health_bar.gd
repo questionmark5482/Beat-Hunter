@@ -22,7 +22,7 @@ func _init(input_max_health):
 func decrease_health(amount: int):
 	current_health -= amount
 	if current_health <= 0:
-		print("Health <= 0!")
+#		print("Health <= 0!")
 		current_health = 0
 	show_health_status()
 	health_changed.emit()
@@ -45,4 +45,5 @@ func set_max_health(amount: int):
 		current_health = max_health
 
 func show_health_status():
-	print("Max Health = " + str(max_health) + ", Current Health = " + str(current_health))
+#	print("Max Health = " + str(max_health) + ", Current Health = " + str(current_health))
+	pass
