@@ -1,4 +1,18 @@
 ################################################################################################
+2023/10/25:
+	Continue with the to-do list on 10/22, First the rotation speed. -> Finished.  The fmod() function is very bad when dealing with negative numbers. (Movement not exactly)
+	Details on 2:
+		- Attack box is a node2d that has no collision (area2d?), but with the ability to move (can move it manually of course)
+		- 
+		
+
+
+
+
+
+
+
+################################################################################################
 2023/10/22:
 	For the repeated input, seems one can fix it just by using is_action_pressed(). Now continue to
 	fix the alignment.

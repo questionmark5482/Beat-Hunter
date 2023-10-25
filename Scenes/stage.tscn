@@ -9,6 +9,8 @@
 [node name="BeatsManager" parent="." instance=ExtResource("1_o6i02")]
 
 [node name="Player" parent="." instance=ExtResource("3_dvebp")]
+position = Vector2(-289, 0)
 
 [node name="Monster" parent="." instance=ExtResource("3_217rf")]
 position = Vector2(206, -2)
+rotation = -1.57079

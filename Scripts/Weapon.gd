@@ -29,8 +29,7 @@ func _ready():
 	
 	# Connect signals:
 	beats_manager.beat_information.connect(_on_beat)
-	
-	print(str(attack_move.delay_beat))
+
 	
 func _process(delta):
 	pass
