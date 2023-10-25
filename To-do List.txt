@@ -1,9 +1,20 @@
 ################################################################################################
 2023/10/25:
-	Continue with the to-do list on 10/22, First the rotation speed. -> Finished.  The fmod() function is very bad when dealing with negative numbers. (Movement not exactly)
+	Continue with the to-do list on 10/22, First the rotation speed. -> Finished.  
+	The fmod() function is very bad when dealing with negative numbers. (Movement not exactly)
 	Details on 2:
-		- Attack box is a node2d that has no collision (area2d?), but with the ability to move (can move it manually of course)
-		- 
+		- Attack box is a node2d that has no collision (area2d?), but with 
+			the ability to move (can move it manually of course)
+		- ...
+		
+	
+	Night: for the monster to summon many attack_boxes, use .instantiate(), which requires the scene
+		to be saved as packedscene. Check the downloaded template. 
+		For now, let's focus on making one atack_box that works well.
+		
+		The Monster_attack_box is basically the same as a weapon, but simpler.
+		
+		Tracking problem: the movement of monster is not substracted.
 		
 
 
