@@ -14,7 +14,8 @@
 		
 		The Monster_attack_box is basically the same as a weapon, but simpler.
 		
-		Tracking problem: the movement of monster is not substracted.
+		Tracking problem: the movement of monster is not substracted. 
+		Or in another way, the "set_global_position" isn't global enough. Try fix this way.
 		
 
 
