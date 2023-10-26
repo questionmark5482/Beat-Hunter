@@ -48,9 +48,7 @@ func calculate_input_beat(input_time_global: float) -> int:
 
 func time_to_following_beat(n: int) -> float:
 	var current_time = Time.get_unix_time_from_system() - start_time
-	return n * beat_interval + current_time - current_beat_time
-
-
+	return n * beat_interval - current_time + current_beat_time
 
 # Callbacks
 func _on_timer_timeout():

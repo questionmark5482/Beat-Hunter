@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://do1c08fvn57es"]
+[gd_scene load_steps=7 format=3 uid="uid://do1c08fvn57es"]
 
 [ext_resource type="Script" path="res://Scripts/monster.gd" id="1_r1c88"]
 [ext_resource type="Texture2D" uid="uid://dcap3h1bilchx" path="res://icon.svg" id="1_wk683"]
-[ext_resource type="Script" path="res://Scripts/Monster_attack_box.gd" id="3_4mw5r"]
-[ext_resource type="Texture2D" uid="uid://be8w23eci5djc" path="res://Textures/monster_attack_box.png" id="4_50jvh"]
 
 [sub_resource type="Animation" id="Animation_53024"]
 length = 0.001
@@ -68,8 +66,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0t05"]
 size = Vector2(65, 65)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o0tkg"]
-
 [node name="Monster" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_r1c88")
@@ -88,20 +84,3 @@ libraries = {
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_x0t05")
 debug_color = Color(0.976471, 0.14902, 0, 0.419608)
-
-[node name="Monster_attack_box" type="Node2D" parent="."]
-position = Vector2(0, -150)
-script = ExtResource("3_4mw5r")
-
-[node name="Attack_area" type="Area2D" parent="Monster_attack_box"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Monster_attack_box/Attack_area"]
-scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_o0tkg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Monster_attack_box/Attack_area/CollisionShape2D"]
-texture = ExtResource("4_50jvh")
-
-[node name="Track_timer" type="Timer" parent="Monster_attack_box"]
-
-[node name="Explode_timer" type="Timer" parent="Monster_attack_box"]

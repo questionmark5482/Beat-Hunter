@@ -53,7 +53,6 @@ func _ready():
 	health_bar.health_changed.connect(_on_health_changed)
 	weapon.fired.connect(_on_weapon_fired)
 	beats_manager.beat_information.connect(_on_beat)
-	
 
 func _physics_process(delta):
 #	print(str(beats_manager.calculate_input_beat(Time.get_unix_time_from_system())))

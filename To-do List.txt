@@ -1,4 +1,27 @@
 ################################################################################################
+2023/10/26:
+	To solve the attackbox tracking problem: In the template game, bullets aren't affected by player movement. 
+	Maybe it doesn't need to be a child of monster? Let's try it out.
+	
+	Result: Once it's no longer child of monster, everything is fine!
+	The next thing: 
+		1. Align the track and explosion to beats.
+		2. Send the signal to player and make player lose health.
+		3. Make the process reusable.
+
+	Bad news: the scene file break after I delete someting to fix a problem.
+		The problem is class naming (after I made the attack_box no longer a child of monster)
+
+
+	The scene problem is fixed, but not the auto complement of code. But let's set that aside. Not really important.
+	What's important maybe: the structure of attack_box listening to beats may be bad? Let's try do it in the current
+	way and see if it's problematic. 
+	-> At least fine until now. Maybe we can look for cleaner and more uniform way for nodes to listen to beats later!
+	Now the aligning is finished, next step is 2.
+
+
+
+################################################################################################
 2023/10/25:
 	Continue with the to-do list on 10/22, First the rotation speed. -> Finished.  
 	The fmod() function is very bad when dealing with negative numbers. (Movement not exactly)

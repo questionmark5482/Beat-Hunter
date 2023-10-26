@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://kt7mqligm2ml"]
+
+[ext_resource type="Script" path="res://Scripts/Monster_attack_box.gd" id="1_70f77"]
+[ext_resource type="Texture2D" uid="uid://be8w23eci5djc" path="res://Textures/monster_attack_box.png" id="2_cup82"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0tkg"]
+
+[node name="Monster_attack_box" type="Node2D"]
+position = Vector2(0, -150)
+script = ExtResource("1_70f77")
+
+[node name="Attack_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_o0tkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack_area/CollisionShape2D"]
+texture = ExtResource("2_cup82")
+
+[node name="Track_timer" type="Timer" parent="."]
+
+[node name="Explode_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Track_timer" to="." method="_on_track_timer_timeout"]
+[connection signal="timeout" from="Explode_timer" to="." method="_on_explode_timer_timeout"]
