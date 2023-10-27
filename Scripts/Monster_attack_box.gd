@@ -5,11 +5,11 @@ var player_vector: Vector2
 var player_direction: Vector2
 var move_direction: Vector2
 var is_tracking: bool = false
-var track_speed: float = 100
+var track_speed: float = 200
 var track_time: float
 var explode_time: float
-var track_beat: int = 1
-var explode_beat: int = 1
+var track_beat: int = 2
+var explode_beat: int = 2
 
 
 
