@@ -11,6 +11,8 @@ var explode_time: float
 var track_beat: int = 2
 var explode_beat: int = 2
 
+var damage: int = 1
+var damaged_bodies: Array
 
 
 # Child nodes:
@@ -23,7 +25,7 @@ var beats_manager: Beats_manager
 var player: Player
 
 # Signals:
-
+signal exploded(damaged_bodies, damage)
 
 func _ready():
 	# Get child nodes:
@@ -65,7 +67,12 @@ func handle_tracking(delta):
 	set_global_position(self.get_global_transform().origin + displacement)
 	pass
 	
-
+func explode():
+#	audio_player.play()
+#	print(str(attack_move.attack_name) + "! Damage = " + str(attack_move.damage))
+	damaged_bodies = attack_area.get_overlapping_bodies()
+	exploded.emit(damaged_bodies, damage)
+	pass
 
 # Callbacks
 func _on_track_timer_timeout():
@@ -74,3 +81,4 @@ func _on_track_timer_timeout():
 
 func _on_explode_timer_timeout():
 	print("Explode!")
+	exploded.emit(damaged_bodies, damage)

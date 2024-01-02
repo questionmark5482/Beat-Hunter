@@ -11,6 +11,7 @@ var attack_area: Area2D
 var attack_timer: Timer
 @export var attack_move: Attack_move
 
+
 # Other nodes:
 var beats_manager: Beats_manager
 

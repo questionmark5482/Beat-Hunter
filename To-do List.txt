@@ -1,4 +1,14 @@
 ################################################################################################
+2023/10/27:
+	How to let player connect to signals that belongs to a newly instantiated attack_box? 
+	Maybe write the code in the _ready function of that box? perhaps grab the player and execute code.
+	Let's go check out how the template managed to do this.
+
+
+
+
+
+################################################################################################
 2023/10/26:
 	To solve the attackbox tracking problem: In the template game, bullets aren't affected by player movement. 
 	Maybe it doesn't need to be a child of monster? Let's try it out.
@@ -13,8 +23,8 @@
 		The problem is class naming (after I made the attack_box no longer a child of monster)
 
 
-	The scene problem is fixed, but not the auto complement of code. But let's set that aside. Not really important.
-	What's important maybe: the structure of attack_box listening to beats may be bad? Let's try do it in the current
+	The scene problem is fixed, but not the auto completiont of code. But let's set that aside. Not really important.
+	What's important may be: the structure of attack_box listening to beats may be bad? Let's try do it in the current
 	way and see if it's problematic. 
 	-> At least fine until now. Maybe we can look for cleaner and more uniform way for nodes to listen to beats later!
 	Now the aligning is finished, next step is 2.
@@ -40,11 +50,6 @@
 		Tracking problem: the movement of monster is not substracted. 
 		Or in another way, the "set_global_position" isn't global enough. Try fix this way.
 		
-
-
-
-
-
 
 
 ################################################################################################
@@ -75,7 +80,6 @@
 				it summons series of attack box that explodes on certain beats.
 				attack box can move (chase player) and attack. Has count down UI.
 			3. Monster can also charge. 
-
 
 
 
